@@ -126,6 +126,19 @@ Set listnumber(Iterable<String> oldlist) {
   return newlist;
 }
 
+class Point {
+  double x;
+  double y;
+  double z;
+
+  Point(this.x, this.y, this.z);
+
+  num distanceTo(Point a) {
+    num distant = pow((a.x - x), 2) + pow((a.y - y), 2) + pow((a.z - z), 2);
+    return distant;
+  }
+}
+
 void main() {
   int a = 12;
   int b = 5;
@@ -139,4 +152,7 @@ void main() {
   print(chislo("ewdwd 123 qwd 123"));
   print(Slovar(["mylist", 1, 1, 1, "WD", "WD"]));
   print(listnumber(["one", "4, 3", "two", "zero"]));
+  Point point1 = Point(3, 0, 0);
+  Point point2 = Point(0, 0, 0);
+  print(point1.distanceTo(point2));
 }
