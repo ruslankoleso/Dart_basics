@@ -73,7 +73,7 @@ int Ten(List<dynamic> s) {
   return chislo.toInt();
 }
 
-// вытаскивание из строки чисел
+// вытаскивание из строки чисел таск 3
 Iterable chislo(String str) {
   List<String> mylist = str.split(' ');
   List<int?> newlist = [];
@@ -86,7 +86,7 @@ Iterable chislo(String str) {
   return newlist;
 }
 
-// создание словаря
+// создание словаря таск4
 Map Slovar(Iterable mylist) {
   Map newmap = <String, int>{};
   for (var element in mylist) {
@@ -103,6 +103,29 @@ Map Slovar(Iterable mylist) {
   return newmap;
 }
 
+// таск 5
+Set listnumber(Iterable<String> oldlist) {
+  Map<String, int> proverka = {
+    "one": 1,
+    "two": 2,
+    "zero": 0,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eigth": 8,
+    "nine": 9
+  };
+  Set newlist = {};
+  for (var elements in oldlist) {
+    if (proverka.containsKey(elements)) {
+      newlist.add(proverka[elements]);
+    }
+  }
+  return newlist;
+}
+
 void main() {
   int a = 12;
   int b = 5;
@@ -115,4 +138,5 @@ void main() {
   print(Ten([1, 1, 0, 0]));
   print(chislo("ewdwd 123 qwd 123"));
   print(Slovar(["mylist", 1, 1, 1, "WD", "WD"]));
+  print(listnumber(["one", "4, 3", "two", "zero"]));
 }
