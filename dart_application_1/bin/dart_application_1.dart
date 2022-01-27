@@ -73,6 +73,18 @@ int Ten(List<dynamic> s) {
   return chislo.toInt();
 }
 
+Iterable chislo(String str) {
+  List<String> mylist = str.split(' ');
+  List<int?> newlist = [];
+  for (int i = 0; i < mylist.length; i += 1) {
+    int? a = int.tryParse(mylist[i]);
+    if (a != null) {
+      newlist.add(a);
+    }
+  }
+  return newlist;
+}
+
 void main() {
   int a = 12;
   int b = 5;
@@ -83,4 +95,5 @@ void main() {
   print(Prostoe(1));
   print(Dvoich(12));
   print(Ten([1, 1, 0, 0]));
+  print(chislo("ewdwd 123 qwd 123"));
 }
