@@ -153,6 +153,27 @@ class Point {
   }
 }
 
+// нахождения корня n ой степени 7 таск
+
+num? Radical(num A, num n) {
+  num xk = A / 10;
+  if (A > 0) {
+    while (double.parse((pow(xk, n)).toStringAsFixed(2)) != A) {
+      num x_K_1 = (1 / n) * ((n - 1) * xk + (A / (pow(xk, n - 1))));
+      xk = x_K_1;
+      if (pow(xk, n) < A) {
+        // var number = new Random();
+        // xk = A / number.nextDouble();
+        print(pow(xk, n));
+      }
+      print(pow(xk, n));
+    }
+    return xk;
+  } else {
+    print(Error());
+  }
+}
+
 void main() {
   int a = 12;
   int b = 5;
@@ -169,4 +190,5 @@ void main() {
   Point point1 = Point(3, 0, 0);
   Point point2 = Point(0, 0, 0);
   print(point1.distanceTo(point2));
+  print(Radical(12, 3));
 }
