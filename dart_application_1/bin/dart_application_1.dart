@@ -126,6 +126,7 @@ Set listnumber(Iterable<String> oldlist) {
   return newlist;
 }
 
+// класс точка
 class Point {
   double x;
   double y;
@@ -136,6 +137,19 @@ class Point {
   num distanceTo(Point a) {
     num distant = pow((a.x - x), 2) + pow((a.y - y), 2) + pow((a.z - z), 2);
     return distant;
+  }
+
+  factory Point.originOfCoordinates() {
+    return Point(0, 0, 0);
+  }
+  factory Point.vectorY() {
+    return Point(0, 1, 0);
+  }
+  factory Point.vectorX() {
+    return Point(1, 0, 0);
+  }
+  factory Point.vectorZ() {
+    return Point(0, 0, 1);
   }
 }
 
