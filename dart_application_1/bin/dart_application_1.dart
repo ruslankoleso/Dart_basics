@@ -174,21 +174,84 @@ num? Radical(num A, num n) {
   }
 }
 
+class User {
+  String email;
+  User(this.email);
+}
+
+class AdminUser extends User with getMailSystem1 {
+  AdminUser(String email) : super(email);
+}
+
+class GeneralUser extends User {
+  GeneralUser(String email) : super(email);
+}
+
+mixin getMailSystem1 on User {
+  String getMailSystem() {
+    List<String> list = email.split("@");
+    return list[1];
+  }
+}
+
+class UserManager<T extends User> {
+  List list;
+  UserManager(this.list);
+
+  void UserAdd(T email) {
+    list.add(email);
+  }
+
+  void Userdelete(T email) {
+    try {
+      list.remove(email);
+    } catch (e) {
+      print("ошибка $e, нет такого email");
+    }
+  }
+
+  void AllUserprint() {
+    for (int i = 0; i < list.length; i += 1) {
+      if (list[i] is AdminUser) {
+        Adminprint(list[i]);
+      } else {
+        Userprint(list[i]);
+      }
+    }
+  }
+
+  void Adminprint<L extends AdminUser>(AdminUser adminuser) {
+    print(adminuser.getMailSystem());
+  }
+
+  void Userprint(User useremail) {
+    print(useremail.email);
+  }
+}
+
 void main() {
-  int a = 12;
-  int b = 5;
-  print(NOD(2, 2));
-  print(NOD(a, b));
-  print(NOK(a, b));
-  print(Mnogit(a));
-  print(Prostoe(1));
-  print(Dvoich(12));
-  print(Ten([1, 1, 0, 0]));
-  print(chislo("ewdwd 123 qwd 123"));
-  print(Slovar(["mylist", 1, 1, 1, "WD", "WD"]));
-  print(listnumber(["one", "4, 3", "two", "zero"]));
-  Point point1 = Point(3, 0, 0);
-  Point point2 = Point(0, 0, 0);
-  print(point1.distanceTo(point2));
-  print(Radical(12, 3));
+  // int a = 12;
+  // int b = 5;
+  // print(NOD(2, 2));
+  // print(NOD(a, b));
+  // print(NOK(a, b));
+  // print(Mnogit(a));
+  // print(Prostoe(1));
+  // print(Dvoich(12));
+  // print(Ten([1, 1, 0, 0]));
+  // print(chislo("ewdwd 123 qwd 123"));
+  // print(Slovar(["mylist", 1, 1, 1, "WD", "WD"]));
+  // print(listnumber(["one", "4, 3", "two", "zero"]));
+  // Point point1 = Point(3, 0, 0);
+  // Point point2 = Point(0, 0, 0);
+  // print(point1.distanceTo(point2));
+  // print(Radical(12, 3));
+  AdminUser srww = AdminUser("wwfe@wdf0");
+  print(srww.getMailSystem());
+  User ruslan = User("rus@rus.com");
+  UserManager adres = UserManager([
+    ruslan,
+  ]);
+  adres.UserAdd(srww);
+  adres.AllUserprint();
 }
